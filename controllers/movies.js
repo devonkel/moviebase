@@ -1,18 +1,22 @@
 'use strict';
 
-var MoviesModel = require('../models/movies');
+var Movie = require('../models/movies');
 
 
 module.exports = function (router) {
 
-    var model = new MoviesModel();
+    var model = new Movie();
 
     router.get('/', function (req, res) {
-        
-        
-        res.render('movies', model);
-        
-        
+        Movie.find({}, function(err, movies){
+            if(err){
+                res.send(err);
+            } else {
+                var model = {
+                    movies: movies
+                }
+                res.render('movies', model);
+            }
+        });
     });
-
 };
