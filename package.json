@@ -21,6 +21,7 @@
     "makara": "^2.0.3",
     "mongoose": "*",
     "express-session": "*",
+    "express-messages": "*",
     "connect-flash": "*"
   },
   "devDependencies": {

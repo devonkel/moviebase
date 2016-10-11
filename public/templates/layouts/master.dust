@@ -3,18 +3,54 @@
     <head>
         <meta charset="utf-8" />
         <title>{+title /}</title>
-    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
         <link rel="stylesheet" href="/css/app.css">
     
     </head>
     <body>
-
-        <div id="wrapper">
-            {+body /}
+        <header>
+            <div class="row">
+                <div class="large-8 columns">
+                    <h1>Movie Base</h1>
+                </div>
+                <div class="large-4 columns">
+                    <a href="/moviebase/add" class="button right">Add Movies</a>
+                </div>
+            </div>
+        </header>
+        <div class="row">
+            <div class="large-8 columns">
+                {+body /}
+            </div>
+            <div class="large-4 columns">
+                <form method="post" action="/movies/search">
+                    <input type="hidden" name="_csrf" value="{_csrf}">
+                    <div class="row">
+                        <div class="large-10 columns">
+                            <input type="text" name="searchText" placeholder="Search Movies ..." />
+                        </div>
+                        <div class="large-2 columns">
+                            <input type="submit" value="Go" class="button tiny" />
+                        </div>
+                    </div>
+                </form>
+                <div class="side-nav-wrap">
+                    <h3>Movie Genres</h3>
+                    <ul class="side-nav">
+                        <li><a href="/movies/genre/Action">Action</a></li>
+                        <li><a href="/movies/genre/Comedy">Comedy</a></li>
+                        <li><a href="/movies/genre/Documentary">Documentary</a></li>
+                        <li><a href="/movies/genre/Drama">Drama</a></li>
+                        <li><a href="/movies/genre/Horror">Horror</a></li>
+                        <li><a href="/movies/genre/Other">Other</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
     
         <script src="/js/app.js"></script>
+        <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
     
     </body>
 </html>
