@@ -1,0 +1,18 @@
+{
+  "name": "moviebase",
+  "description": "Movie Information DB",
+  "main": "index.js",
+  "author": "Devon Kelly",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ]
+}
