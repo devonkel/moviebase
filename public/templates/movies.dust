@@ -7,7 +7,7 @@
             <img src="{.cover}">
             <h3>{.title}</h3>
             <a href="/movies/details/{.id}" class="button tiny">Info</a>
-            <a href="{.trailer}" target="_blank" class="button success tiny">View Trailer</a>
+            <a href="https://www.youtube.com/embed/{.trailer}" target="_blank" class="button success tiny">View Trailer</a>
         </div>
     {:else}
         <p>No movie results</p>

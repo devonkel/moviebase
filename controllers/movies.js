@@ -50,8 +50,25 @@ module.exports = function (router) {
        }); 
     });
     
+    router.post('/search', function(req, res){
+        console.log('Searching ...');
+        Movie.search(req.body.searchText, {title: 1, plot: 1, cover: 1}, {
+            conditions: {title: {$exists: true}, plot: {$exists: true}, cover: {$exists: true}},
+            sort: {title: 1},
+            limit: 10
+        }, function(err, movies){
+            if(err){
+                res.send(err);
+            } else {
+                var model = {movies: movies.results};
+                res.render('movies', model);
+            }
+        });
+    });
+    
     router.post('/add', function (req, res){
         var title = req.body.title && req.body.title.trim();
+        var rating = req.body.rating && req.body.rating.trim();
         var genre = req.body.genre && req.body.genre.trim();
         var plot = req.body.plot && req.body.plot.trim();
         var release_date = req.body.release_date && req.body.release_date.trim();
@@ -67,6 +84,7 @@ module.exports = function (router) {
         
         var newMovie = new Movie({
             title: title,
+            rating: rating,
             genre: genre,
             plot: plot,
             release_date: release_date,
@@ -88,6 +106,7 @@ module.exports = function (router) {
     
     router.post('/edit/:id', function (req, res){
         var title = req.body.title && req.body.title.trim();
+        var rating = req.body.rating && req.body.rating.trim();
         var genre = req.body.genre && req.body.genre.trim();
         var plot = req.body.plot && req.body.plot.trim();
         var release_date = req.body.release_date && req.body.release_date.trim();
@@ -105,6 +124,7 @@ module.exports = function (router) {
         
         var update = {
             title: title,
+            rating: rating,
             genre: genre,
             plot: plot,
             release_date: release_date,

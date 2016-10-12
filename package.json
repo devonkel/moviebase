@@ -3,13 +3,19 @@
   "version": "0.1.0",
   "description": "Movie Information DB",
   "author": "Devon Kelly",
+  "license": "MIT",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devonkel/moviebase.git"
+  },
   "scripts": {
     "test": "grunt test",
     "build": "grunt build",
     "all": "npm run build && npm run test"
   },
   "dependencies": {
+    "connect-flash": "*",
     "construx": "^1.0.0",
     "construx-copier": "^1.0.0",
     "construx-dustjs": "^1.1.0",
@@ -17,12 +23,12 @@
     "dust-makara-helpers": "^4.1.2",
     "eslint": "^1.10.3",
     "express": "^4.12.2",
+    "express-messages": "*",
+    "express-session": "*",
     "kraken-js": "^2.0.0",
     "makara": "^2.0.3",
     "mongoose": "*",
-    "express-session": "*",
-    "express-messages": "*",
-    "connect-flash": "*"
+    "mongoose-search-plugin": "^0.1.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

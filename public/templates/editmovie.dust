@@ -17,6 +17,21 @@
                 
                 <div class="row">
                     <div class="large-12 columns">
+                        <label>MPAA Rating
+                            <select name="rating">
+                                <option value="G">G</option>
+                                <option value="PG">PG</option>
+                                <option value="PG13">PG13</option>
+                                <option value="R">R</option>
+                                <option value="NC17">NC17</option>
+                                <option value="X">X</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="large-12 columns">
                         <label>Genre
                             <select name="genre">
                                 <option value="Action">Action</option>
