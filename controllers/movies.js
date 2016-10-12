@@ -66,6 +66,17 @@ module.exports = function (router) {
         });
     });
     
+    router.get('/genre/:genre', function(req, res){
+        Movie.find({genre: req.params.genre}, function(err, movies){
+           if (err) {
+               res.send(err);
+           } else {
+               var model = {movies: movies};
+               res.render('movies', model);
+           }
+        });
+    });
+    
     router.post('/add', function (req, res){
         var title = req.body.title && req.body.title.trim();
         var rating = req.body.rating && req.body.rating.trim();
