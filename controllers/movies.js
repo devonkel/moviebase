@@ -123,4 +123,16 @@ module.exports = function (router) {
             }
         });
     });
+    
+    router.delete('/delete/:id', function(req, res){
+        var query = {_id: req.params.id};
+        
+        Movie.remove(query, function(err){
+            if (err) {
+                res.send(err);
+            } else {
+                res.status(204).send();
+            }
+        });
+    });
 };
