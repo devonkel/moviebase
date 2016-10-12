@@ -3,6 +3,7 @@
 @primary: #f15500;
 @secondary: #2d6696;
 @text: #ffffff;
+@red: #ff0000;
 
 body{
     background: @background;
@@ -19,8 +20,21 @@ header{
     margin-bottom: 20px;
 }
 
-.button{
+button, .button{
     background: @primary;
+}
+
+input.delete-movie{
+    background: @red;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 0;
+    padding: .85em 1em;
+    margin: 0 0 1rem;
+    font-size: .9rem;
 }
 
 .side-nav-wrap{
@@ -28,6 +42,10 @@ header{
     padding: 15px;
 }
 
-[class*="column"]+[class*="column"]:last-child{
+[class*="columns"]+[class*="columns"]:last-child{
+    float:left
+}
+
+[class*="columns"]+[class*="columns"]+[class*="columns"]:last-child{
     float:left
 }

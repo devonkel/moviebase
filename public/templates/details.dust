@@ -1,7 +1,8 @@
 {>"layouts/master" /}
 {<body}
     <div class="row">
-        <a href="/movies" class="button">Go Back</a>
+        <a href="/movies" class="button">Go Back</a> | <a href="/movies/edit/{movie._id}" class="button">Edit</a> | <input type="button" class="delete-movie" data-movie-id="{movie._id}" data-csrf="{_csrf}" value="Delete">
+
         <br>
         <h2>{movie.title}</h2>
         <h2>Movie Details</h2>
@@ -50,5 +51,5 @@
     {/movie.trailer}
 
     <br>
-    <a href="/movies/edit/{movie._id}" class="button">Edit</a> | <a href="#" class="delete-movie" data-movie-id="{movie._id}" data-csrf="{_csrf}">Delete</a>
+    <a href="/movies" class="button">Go Back</a> | <a href="/movies/edit/{movie._id}" class="button">Edit</a> | <input type="button" class="delete-movie" data-movie-id="{movie._id}" data-csrf="{_csrf}" value="Delete">
 {/body}

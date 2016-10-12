@@ -80,28 +80,29 @@ module.exports = function (router) {
             req.flash('error', "Please fill out required(*) fields.");
             res.location('/movies/add');
             res.redirect('/movies/add');
+        } else {
+        
+            var newMovie = new Movie({
+                title: title,
+                rating: rating,
+                genre: genre,
+                plot: plot,
+                release_date: release_date,
+                director: director,
+                trailer: trailer,
+                cover: cover
+            });
+
+            newMovie.save(function (err){
+                if (err){
+                    res.send(err);
+                } else {
+                    req.flash('success',"Movie added.");
+                    res.location('/movies');
+                    res.redirect('/movies');                
+                }
+            });
         }
-        
-        var newMovie = new Movie({
-            title: title,
-            rating: rating,
-            genre: genre,
-            plot: plot,
-            release_date: release_date,
-            director: director,
-            trailer: trailer,
-            cover: cover
-        });
-        
-        newMovie.save(function (err){
-            if (err){
-                res.send(err);
-            } else {
-                req.flash('success',"Movie added.");
-                res.location('/movies');
-                res.redirect('/movies');                
-            }
-        });
     });
     
     router.post('/edit/:id', function (req, res){
@@ -115,33 +116,35 @@ module.exports = function (router) {
         var cover = req.body.cover && req.body.cover.trim();
         
         if (title == '' || release_date == ''){
+            console.log('ERROR: No title or release_date');
             req.flash('error', "Please fill out required(*) fields.");
-            res.location('/movies/edit/req.params.id');
-            res.redirect('/movies/edit/req.params.id');
+            res.location('/movies/edit/'+req.params.id);
+            res.redirect('/movies/edit/'+req.params.id);
+        } else {
+        
+            var query = {_id: req.params.id};
+
+            var update = {
+                title: title,
+                rating: rating,
+                genre: genre,
+                plot: plot,
+                release_date: release_date,
+                director: director,
+                trailer: trailer,
+                cover: cover
+            };
+
+            Movie.update(query, update, function (err){
+                if (err){
+                    res.send(err);
+                } else {
+                    req.flash('success',"Movie updated.");
+                    res.location('/movies');
+                    res.redirect('/movies');                
+                }
+            });
         }
-        
-        var query = {_id: req.params.id};
-        
-        var update = {
-            title: title,
-            rating: rating,
-            genre: genre,
-            plot: plot,
-            release_date: release_date,
-            director: director,
-            trailer: trailer,
-            cover: cover
-        };
-        
-        Movie.update(query, update, function (err){
-            if (err){
-                res.send(err);
-            } else {
-                req.flash('success',"Movie updated.");
-                res.location('/movies');
-                res.redirect('/movies');                
-            }
-        });
     });
     
     router.delete('/delete/:id', function(req, res){

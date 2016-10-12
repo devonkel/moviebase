@@ -88,7 +88,7 @@
                 
                 <div class="row">
                     <div class="large-12 columns">
-                        <input type="submit" class="button" value="Submit"> | 
+                        <input type="submit" class="button" value="Update"> | 
                         <a href="/movies" class="button">Cancel</a>
                     </div>
                 </div> 
