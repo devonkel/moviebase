@@ -1,0 +1,86 @@
+{>"layouts/master" /}
+
+{<body}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h2>Edit Movie</h2>
+            
+            <form method="post" action="/movies/edit/{movie._id}">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Title *
+                            <input name="title" type="text" value="{movie.title}" />
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Genre
+                            <select name="genre">
+                                <option value="Action">Action</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Documentary">Documentary</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Plot
+                            <textarea name="plot">{movie.plot}</textarea>
+                        </label>
+                    </div>
+                </div>                 
+                
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Release Date *
+                            <input name="release_date" type="date" value="{movie.release_date}" />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Director
+                            <input name="director" type="text" value="{movie.director}" />
+                        </label>
+                    </div>
+                </div>                
+                
+                 <div class="row">
+                    <div class="large-12 columns">
+                        <label>Trailer YouTube Embed ID (https://www.youtube.com/watch?v=<strong>XXXXXXXXXXX</strong>)
+                            <input name="trailer" type="text" value="{movie.trailer}" />
+                        </label>
+                    </div>
+                </div>    
+                
+                 <div class="row">
+                    <div class="large-12 columns">
+                        <label>Cover Art URL
+                            <input name="cover" type="text" value="{movie.cover}" />
+                        </label>
+                    </div>
+                </div>          
+                
+                <div class="row">
+                    <div class="large-12 columns">
+                        <input type="submit" class="button" value="Submit"> | 
+                        <a href="/movies" class="button">Cancel</a>
+                    </div>
+                </div> 
+                
+                <input type="hidden" name="_csrf" value="{_csrf}">
+                
+            </form>
+        </div>
+    </div>    
+{/body}
